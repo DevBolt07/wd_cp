@@ -3,27 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultural Department of India</title>
+    <title>Cultural Department - Government of India</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Cultural Department of India</h1>
-        <nav>
-            <a href="#">Home</a> |
-            <a href="#">About</a> |
-            <a href="#">Events</a> |
-            <a href="#">Gallery</a> |
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Our Mission</h2>
-            <p>To promote and preserve the diverse culture and heritage of India.</p>
-        </section>
-    </main>
-    <footer>
-        <p>© 2025 Government of India - Cultural Department</p>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-om"></i>
+                Cultural Department
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#initiatives">Initiatives</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Celebrating India's Rich Cultural Heritage</h1>
+            <p>Preserving traditions, fostering diversity, and promoting cultural excellence across the nation</p>
+            <a href="#about" class="cta-button">Discover Our Culture</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-header">
+            <h2>About Cultural Department</h2>
+            <p>Dedicated to preserving and promoting India's diverse cultural heritage</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>The Cultural Department of the Government of India serves as the custodian of our nation's rich and diverse cultural heritage. We are committed to preserving, promoting, and propagating the myriad forms of art, traditions, and cultural practices that define India's identity.</p>
+                <p>Our mission encompasses supporting artists, organizing cultural events, maintaining heritage sites, and fostering cultural exchange both within India and internationally. We believe that culture is the soul of a nation, and through our various initiatives, we strive to keep India's cultural flame burning bright for future generations.</p>
+            </div>
+            <div class="about-image">
+                <img src="/api/placeholder/500/400" alt="Indian Cultural Heritage">
+            </div>
+        </div>
+        <div class="culture-cards">
+            <div class="culture-card">
+                <i class="fas fa-music"></i>
+                <h3>Classical Music</h3>
+                <p>Preserving the ancient traditions of Hindustani and Carnatic music</p>
+            </div>
+            <div class="culture-card">
+                <i class="fas fa-theater-masks"></i>
+                <h3>Performing Arts</h3>
+                <p>Supporting various forms of dance, drama, and theatrical performances</p>
+            </div>
+            <div class="culture-card">
+                <i class="fas fa-palette"></i>
+                <h3>Visual Arts</h3>
+                <p>Promoting painting, sculpture, and contemporary artistic expressions</p>
+            </div>
+            <div class="culture-card">
+                <i class="fas fa-landmark"></i>
+                <h3>Heritage Sites</h3>
+                <p>Conserving and maintaining India's UNESCO World Heritage Sites</p>
+            </div>
+            <div class="culture-card">
+                <i class="fas fa-hands"></i>
+                <h3>Handicrafts</h3>
+                <p>Supporting traditional artisans and promoting Indian handicrafts</p>
+            </div>
+            <div class="culture-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Festivals</h3>
+                <p>Organizing and promoting cultural festivals across the nation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Initiatives Section -->
+    <section id="initiatives" class="section initiatives">
+        <div class="section-header">
+            <h2>Government Initiatives</h2>
+            <p>Transforming India's cultural landscape through innovative programs</p>
+        </div>
+        <div class="initiatives-grid">
+            <div class="initiative-card">
+                <div class="initiative-card-inner">
+                    <div class="initiative-front">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Ek Bharat Shreshtha Bharat</h3>
+                        <p>Enhancing interaction between people of diverse cultures</p>
+                    </div>
+                    <div class="initiative-back">
+                        <h3>Unity in Diversity</h3>
+                        <p>This flagship program aims to strengthen the fabric of traditionally existing emotional bonds between people across states and UTs through enhanced interaction.</p>
+                        <p>It promotes mutual learning and appreciation of diverse cultures, traditions, and languages.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="initiative-card">
+                <div class="initiative-card-inner">
+                    <div class="initiative-front">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Kala Sanskriti Vikas Yojana</h3>
+                        <p>Promoting art and cultural education</p>
+                    </div>
+                    <div class="initiative-back">
+                        <h3>Cultural Education</h3>
+                        <p>A comprehensive scheme for the development of arts and culture education in schools and communities.</p>
+                        <p>Includes training programs, workshops, and infrastructure development for cultural institutions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="initiative-card">
+                <div class="initiative-card-inner">
+                    <div class="initiative-front">
+                        <i class="fas fa-globe-asia"></i>
+                        <h3>International Cultural Exchange</h3>
+                        <p>Building bridges across borders through culture</p>
+                    </div>
+                    <div class="initiative-back">
+                        <h3>Global Outreach</h3>
+                        <p>Facilitating cultural exchanges with countries worldwide to showcase India's rich heritage and learn from global traditions.</p>
+                        <p>Includes artist exchange programs, cultural festivals, and collaborative projects.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="initiative-card">
+                <div class="initiative-card-inner">
+                    <div class="initiative-front">
+                        <i class="fas fa-tools"></i>
+                        <h3>Artisan Development Program</h3>
+                        <p>Empowering traditional craftspeople</p>
+                    </div>
+                    <div class="initiative-back">
+                        <h3>Skill Enhancement</h3>
+                        <p>Supporting traditional artisans through skill development, marketing assistance, and financial support.</p>
+                        <p>Creating sustainable livelihoods while preserving ancient crafts and techniques.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="initiative-card">
+                <div class="initiative-card-inner">
+                    <div class="initiative-front">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Digital Heritage Project</h3>
+                        <p>Digitizing India's cultural treasures</p>
+                    </div>
+                    <div class="initiative-back">
+                        <h3>Digital Preservation</h3>
+                        <p>Creating digital archives of India's cultural heritage for future generations.</p>
+                        <p>Making cultural content accessible through virtual museums and online platforms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="initiative-card">
+                <div class="initiative-card-inner">
+                    <div class="initiative-front">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Youth Cultural Program</h3>
+                        <p>Engaging the next generation in cultural activities</p>
+                    </div>
+                    <div class="initiative-back">
+                        <h3>Future Leaders</h3>
+                        <p>Encouraging youth participation in cultural activities through competitions, workshops, and mentorship programs.</p>
+                        <p>Building cultural ambassadors for the future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="section-header">
+            <h2>Cultural Gallery</h2>
+            <p>Explore the vibrant tapestry of Indian culture</p>
+        </div>
+        <div class="gallery-container">
+            <div class="gallery-item" onclick="openLightbox('/api/placeholder/400/500')">
+                <img src="/api/placeholder/400/500" alt="Traditional Dance">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('/api/placeholder/400/300')">
+                <img src="/api/placeholder/400/300" alt="Heritage Architecture">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('/api/placeholder/400/600')">
+                <img src="/api/placeholder/400/600" alt="Folk Art">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('/api/placeholder/400/400')">
+                <img src="/api/placeholder/400/400" alt="Musical Instruments">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('/api/placeholder/400/350')">
+                <img src="/api/placeholder/400/350" alt="Handicrafts">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('/api/placeholder/400/450')">
+                <img src="/api/placeholder/400/450" alt="Cultural Festival">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section events">
+        <div class="section-header">
+            <h2>Upcoming Events</h2>
+            <p>Join us in celebrating India's cultural richness</p>
+        </div>
+        <div class="events-container">
+            <div class="event-card">
+                <div class="event-date">December 15-20, 2025</div>
+                <h3 class="event-title">International Dance Festival</h3>
+                <div class="event-location"><i class="fas fa-map-marker-alt"></i> New Delhi</div>
+                <p>A grand celebration of classical and folk dances from across India and the world. Featuring renowned artists and emerging talents.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-date">January 5-7, 2026</div>
+                <h3 class="event-title">Heritage Craft Exhibition</h3>
+                <div class="event-location"><i class="fas fa-map-marker-alt"></i> Mumbai</div>
+                <p>Showcasing traditional handicrafts and providing a platform for artisans to display their exquisite work and interact with visitors.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-date">February 10-15, 2026</div>
+                <h3 class="event-title">Classical Music Concert Series</h3>
+                <div class="event-location"><i class="fas fa-map-marker-alt"></i> Chennai</div>
+                <p>A series of concerts featuring maestros of Hindustani and Carnatic music, celebrating the rich musical traditions of India.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-date">March 20-25, 2026</div>
+                <h3 class="event-title">Digital Heritage Workshop</h3>
+                <div class="event-location"><i class="fas fa-map-marker-alt"></i> Bangalore</div>
+                <p>Interactive workshops on digital preservation techniques and virtual museum technologies for cultural organizations.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-date">April 1-30, 2026</div>
+                <h3 class="event-title">Cultural Unity Month</h3>
+                <div class="event-location"><i class="fas fa-map-marker-alt"></i> Pan India</div>
+                <p>A month-long celebration of Ek Bharat Shreshtha Bharat with events showcasing diverse state cultures across the nation.</p>
+            </div>
+            <div class="event-card">
+                <div class="event-date">May 15-20, 2026</div>
+                <h3 class="event-title">International Film Festival</h3>
+                <div class="event-location"><i class="fas fa-map-marker-alt"></i> Goa</div>
+                <p>Screening of culturally significant films from India and around the world, promoting cross-cultural understanding through cinema.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="section-header">
+            <h2 style="color: white;">Get In Touch</h2>
+            <p style="color: rgba(255,255,255,0.9);">We'd love to hear from you</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Connect With Us</h3>
+                <p>Have questions about our cultural programs or want to collaborate? Reach out to us!</p>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Shastri Bhawan, New Delhi - 110001</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91-11-2338-1000</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>culture@gov.in</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2025 Cultural Department, Government of India. All rights reserved.</p>
+            <p>Preserving Heritage • Promoting Unity • Celebrating Diversity</p>
+        </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+    </div>
 </body>
 </html>
