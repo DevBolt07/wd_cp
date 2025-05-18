@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Volunteer Registration - Cultural Dept</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo"><i class="fas fa-om"></i> Cultural Department</div>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="language-hub.html">Language Hub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Intro -->
+  <section class="section" style="margin-top: 100px;">
+    <div class="section-header">
+      <h2>Volunteer With Us</h2>
+      <p>Empower culture, connect people, and make a lasting impact</p>
+    </div>
+    <div class="about-text" style="max-width: 800px; margin: auto; text-align: center;">
+      <p>Volunteers are the heart of our mission. Whether you’re passionate about art, heritage, languages, or logistics — we welcome you to contribute your energy and skills to preserve and promote India’s diverse cultural fabric.</p>
+    </div>
+
+    <!-- Volunteer Roles -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <h2>Opportunities</h2>
+      <p>Select your preferred area of volunteering</p>
+    </div>
+    <div class="culture-cards">
+      <div class="culture-card">
+        <i class="fas fa-users"></i>
+        <h3>Event Coordination</h3>
+        <p>Help manage workshops, festivals, and cultural fairs.</p>
+      </div>
+      <div class="culture-card">
+        <i class="fas fa-bullhorn"></i>
+        <h3>Promotion & Outreach</h3>
+        <p>Assist with social media, posters, and community outreach.</p>
+      </div>
+      <div class="culture-card">
+        <i class="fas fa-language"></i>
+        <h3>Language Support</h3>
+        <p>Translate content and help with multilingual communication.</p>
+      </div>
+      <div class="culture-card">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Tech Assistance</h3>
+        <p>Support our digital platforms and event registrations.</p>
+      </div>
+      <div class="culture-card">
+        <i class="fas fa-camera"></i>
+        <h3>Media & Photography</h3>
+        <p>Capture event highlights and document cultural stories.</p>
+      </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <h2>Benefits</h2>
+      <p>Why volunteer with us?</p>
+    </div>
+    <div class="culture-cards">
+      <div class="culture-card">
+        <i class="fas fa-certificate"></i>
+        <h3>Recognition</h3>
+        <p>Get a government-approved Certificate of Appreciation.</p>
+      </div>
+      <div class="culture-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Networking</h3>
+        <p>Connect with artists, scholars, and cultural leaders.</p>
+      </div>
+      <div class="culture-card">
+        <i class="fas fa-globe"></i>
+        <h3>Community Impact</h3>
+        <p>Be a changemaker and inspire local cultural pride.</p>
+      </div>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <h2>Register as a Volunteer</h2>
+      <p>We’d love to hear from you!</p>
+    </div>
+    <div class="contact-form" style="max-width: 700px; margin: auto;">
+      <form id="volunteer-form">
+        <div class="form-group">
+          <label for="vol-name">Full Name</label>
+          <input type="text" id="vol-name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="vol-email">Email</label>
+          <input type="email" id="vol-email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="vol-phone">Phone Number</label>
+          <input type="text" id="vol-phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="interest">Area of Interest</label>
+          <select id="interest" name="interest" required>
+            <option value="">Select</option>
+            <option value="event">Event Coordination</option>
+            <option value="promotion">Promotion & Outreach</option>
+            <option value="language">Language Support</option>
+            <option value="tech">Tech Assistance</option>
+            <option value="media">Media & Photography</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="city">Preferred City</label>
+          <input type="text" id="city" name="city" placeholder="e.g., Mumbai, Delhi" />
+        </div>
+        <div class="form-group">
+          <label for="availability">Availability</label>
+          <input type="text" id="availability" name="availability" placeholder="Weekends, Evenings..." required />
+        </div>
+        <div class="form-group">
+          <label for="resume">Upload Resume (optional)</label>
+          <input type="file" id="resume" name="resume" />
+        </div>
+        <div class="form-group">
+          <label for="motivation">Why do you want to volunteer?</label>
+          <textarea id="motivation" name="motivation" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label><input type="checkbox" required /> I agree to the terms and privacy policy</label>
+        </div>
+        <button type="submit" class="submit-btn">Submit Application</button>
+      </form>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="section-header" style="margin-top: 5rem;">
+      <h2>Volunteer FAQs</h2>
+    </div>
+    <div style="max-width: 800px; margin: auto;">
+      <div class="culture-card">
+        <h3>Is there any age requirement?</h3>
+        <p>Volunteers must be 16 years or older. Parental consent is needed for minors.</p>
+      </div>
+      <div class="culture-card">
+        <h3>Is volunteering paid?</h3>
+        <p>No, all volunteering is unpaid. However, you gain experience and recognition.</p>
+      </div>
+      <div class="culture-card">
+        <h3>Can I get a certificate?</h3>
+        <p>Yes! Active volunteers will receive a Certificate of Appreciation.</p>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="section-header" style="margin-top: 5rem;">
+      <h2>Make a Difference Today</h2>
+      <p>Join hands to preserve the soul of India’s culture</p>
+      <a href="#volunteer-form" class="cta-button">Start Volunteering</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p>&copy; 2025 Cultural Department, Government of India. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

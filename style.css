@@ -609,3 +609,19 @@
         from { opacity: 0; }
         to { opacity: 1; }
     }
+    /* Language Hub Specific Enhancements */
+    .culture-card a {
+        display: inline-block;
+        margin-top: 0.5rem;
+        color: #138808;
+        font-weight: bold;
+        text-decoration: underline;
+        transition: color 0.3s ease;
+    }
+    .culture-card a:hover {
+        color: #ff9933;
+    }
+    
+    .culture-card p {
+        margin: 0.5rem 0 0;
+    }

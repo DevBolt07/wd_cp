@@ -278,3 +278,31 @@
                 }
             });
         });
+
+        // Volunteer form handling
+        const volunteerForm = document.getElementById('volunteer-form');
+        if (volunteerForm) {
+            volunteerForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+        
+                const name = document.getElementById('vol-name').value;
+                const email = document.getElementById('vol-email').value;
+                const phone = document.getElementById('vol-phone').value;
+                const interest = document.getElementById('interest').value;
+                const motivation = document.getElementById('motivation').value;
+        
+                if (!name || !email || !phone || !interest || !motivation) {
+                    alert('Please fill all required fields.');
+                    return;
+                }
+        
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Enter a valid email address.');
+                    return;
+                }
+        
+                alert('Thank you for registering as a volunteer! We will contact you soon.');
+                volunteerForm.reset();
+            });
+        }

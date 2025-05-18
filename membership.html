@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Membership Portal - Cultural Dept</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><i class="fas fa-om"></i> Cultural Department</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="membership.html">Membership</a></li>
+                <li><a href="language-hub.html">Language Hub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Membership Introduction -->
+    <section class="section" style="margin-top: 100px;">
+        <div class="section-header">
+            <h2>Membership Portal</h2>
+            <p>Join our community and enjoy exclusive cultural experiences</p>
+        </div>
+        <div class="about-text" style="max-width: 800px; margin: auto; text-align: center;">
+            <p>Our membership program is designed to connect individuals who are passionate about Indian culture. From early access to cultural events to exclusive content and discounts—there’s something for everyone!</p>
+        </div>
+
+        <!-- Membership Plans -->
+        <div class="culture-cards" style="margin-top: 3rem;">
+            <div class="culture-card">
+                <i class="fas fa-user"></i>
+                <h3>Basic Membership</h3>
+                <p>Free Access</p>
+                <ul style="text-align: left;">
+                    <li>✅ Monthly Newsletter</li>
+                    <li>✅ Event Notifications</li>
+                    <li>✅ Access to Language Hub</li>
+                </ul>
+            </div>
+            <div class="culture-card">
+                <i class="fas fa-crown"></i>
+                <h3>Premium Membership</h3>
+                <p>₹500 / Year</p>
+                <ul style="text-align: left;">
+                    <li>⭐ All Basic Benefits</li>
+                    <li>⭐ Early Access to Events</li>
+                    <li>⭐ Free Entry to 5 Events</li>
+                    <li>⭐ 20% Discount on Cultural Merchandise</li>
+                    <li>⭐ Digital Membership Certificate</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Join Form -->
+        <div class="section-header" style="margin-top: 4rem;">
+            <h2>Join Now</h2>
+            <p>Fill the form below to become a member</p>
+        </div>
+        <div class="contact-form" style="max-width: 600px; margin: auto;">
+            <form id="membership-form">
+                <div class="form-group">
+                    <label for="mem-name">Full Name</label>
+                    <input type="text" id="mem-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="mem-email">Email Address</label>
+                    <input type="email" id="mem-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mem-type">Choose Membership</label>
+                    <select id="mem-type" name="type" required>
+                        <option value="">Select</option>
+                        <option value="basic">Basic (Free)</option>
+                        <option value="premium">Premium (₹500/year)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Why do you want to join?</label>
+                    <textarea id="reason" name="reason" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Become a Member</button>
+            </form>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="section-header" style="margin-top: 5rem;">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div style="max-width: 800px; margin: auto;">
+            <div class="culture-card">
+                <h3>Who can become a member?</h3>
+                <p>Anyone passionate about Indian culture, art, music, or heritage is welcome to join.</p>
+            </div>
+            <div class="culture-card">
+                <h3>How do I upgrade from Basic to Premium?</h3>
+                <p>You can submit the form again selecting "Premium" or contact us for upgrade assistance.</p>
+            </div>
+            <div class="culture-card">
+                <h3>What payment methods are supported?</h3>
+                <p>UPI, Debit/Credit Cards, and Net Banking (Coming Soon).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2025 Cultural Department, Government of India. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
