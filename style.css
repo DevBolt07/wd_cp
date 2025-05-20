@@ -625,3 +625,335 @@
     .culture-card p {
         margin: 0.5rem 0 0;
     }
+
+    /* Language Hub Specific Styles */
+
+/* Language Card Styling */
+.language-cards {
+    margin-top: 2rem;
+}
+
+.language-card {
+    background: white;
+    border-radius: 15px;
+    padding: 0;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.language-card:hover {
+    transform: translateY(-10px);
+    border-color: #ff9933;
+    box-shadow: 0 15px 40px rgba(255, 153, 51, 0.2);
+}
+
+.language-card-inner {
+    padding: 2rem;
+}
+
+/* Language Icon Styling with Region Colors */
+.language-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.language-card:hover .language-icon {
+    transform: scale(1.1);
+}
+
+/* Region-based colors */
+.north-region {
+    background: linear-gradient(135deg, #ff9933, #ffcc33);
+    color: white;
+}
+
+.south-region {
+    background: linear-gradient(135deg, #138808, #2eb82e);
+    color: white;
+}
+
+.east-region {
+    background: linear-gradient(135deg, #6699ff, #3366ff);
+    color: white;
+}
+
+.west-region {
+    background: linear-gradient(135deg, #9966cc, #6633cc);
+    color: white;
+}
+
+.central-region {
+    background: linear-gradient(135deg, #ff6699, #ff3366);
+    color: white;
+}
+
+/* Language Metadata Styling */
+.language-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.85rem;
+}
+
+.language-family {
+    background: #f0f0f0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    color: #666;
+}
+
+/* Difficulty indicators */
+.language-difficulty {
+    color: #888;
+}
+
+.language-difficulty.easy i:first-child {
+    color: #138808;
+}
+
+.language-difficulty.medium i:first-child,
+.language-difficulty.medium i:nth-child(2) {
+    color: #ff9933;
+}
+
+.language-difficulty.hard i {
+    color: #e74c3c;
+}
+
+/* Learn More Button */
+.learn-more-btn {
+    background: linear-gradient(45deg, #ff9933, #138808);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.learn-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 153, 51, 0.3);
+}
+
+.learn-more-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+    transition: all 0.6s ease;
+}
+
+.learn-more-btn:hover:before {
+    left: 100%;
+}
+
+/* Modal Styles */
+.language-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 15px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.4s ease;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 2rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    color: #ff9933;
+}
+
+.modal-header {
+    padding: 2rem;
+    background: linear-gradient(135deg, #ff9933, #138808);
+    color: white;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+}
+
+.modal-header h2 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+#modal-language-meta {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-region, .modal-family, .modal-difficulty {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.modal-region:before, .modal-family:before, .modal-difficulty:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 0.5rem;
+}
+
+.modal-region:before {
+    content: "\f3c5"; /* map marker */
+}
+
+.modal-family:before {
+    content: "\f549"; /* tree */
+}
+
+.modal-difficulty:before {
+    content: "\f19d"; /* graduation cap */
+}
+
+.modal-body {
+    padding: 2rem;
+    position: relative;
+    min-height: 300px;
+}
+
+.modal-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.modal-loading i {
+    margin-right: 1rem;
+    color: #ff9933;
+}
+
+.modal-wiki-content {
+    line-height: 1.8;
+    color: #333;
+}
+
+.modal-wiki-content p {
+    margin-bottom: 1rem;
+}
+
+.modal-wiki-content h3, .modal-wiki-content h4 {
+    margin: 1.5rem 0 1rem;
+    color: #222;
+}
+
+.modal-wiki-attribution {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    color: #888;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.modal-wiki-attribution a {
+    color: #138808;
+    text-decoration: none;
+}
+
+.modal-wiki-attribution a:hover {
+    color: #ff9933;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+    
+    .modal-header h2 {
+        font-size: 2rem;
+    }
+    
+    #modal-language-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+}

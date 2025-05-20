@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <title>Language Hub - Cultural Dept</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="language-hub.css">
+    <!-- Font Awesome with updated CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo"><i class="fas fa-om"></i> Cultural Department</div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="volunteer.html">Volunteer</a></li>
                 <li><a href="membership.html">Membership</a></li>
                 <li><a href="language-hub.html">Language Hub</a></li>
             </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
@@ -33,87 +40,390 @@
         </div>
 
         <!-- Language Cards -->
-        <div class="culture-cards">
-            <!-- Add more languages here -->
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Hindi</h3>
-                <p>Most spoken language in India. Learn script, grammar & common phrases.</p>
+        <div class="culture-cards language-cards">
+            <!-- Hindi -->
+            <div class="language-card" data-language="Hindi" data-region="North" data-family="Indo-Aryan" data-difficulty="easy">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon north-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Hindi</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Indo-Aryan</span>
+                            <span class="language-difficulty easy">
+                                <i class="fas fa-circle"></i>
+                                <i class="far fa-circle"></i>
+                                <i class="far fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>Most spoken language in India. Learn script, grammar & common phrases.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Bengali</h3>
-                <p>Language of Tagore. Rich literary tradition and unique script.</p>
+            
+            <!-- Bengali -->
+            <div class="language-card" data-language="Bengali" data-region="East" data-family="Indo-Aryan" data-difficulty="medium">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon east-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Bengali</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Indo-Aryan</span>
+                            <span class="language-difficulty medium">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="far fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>Language of Tagore. Rich literary tradition and unique script.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Tamil</h3>
-                <p>One of the oldest classical languages in the world. Still actively used.</p>
+            
+            <!-- Tamil -->
+            <div class="language-card" data-language="Tamil" data-region="South" data-family="Dravidian" data-difficulty="hard">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon south-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Tamil</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Dravidian</span>
+                            <span class="language-difficulty hard">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>One of the oldest classical languages in the world. Still actively used.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Marathi</h3>
-                <p>Spoken widely in Maharashtra. Rich in folk literature and poetry.</p>
+            
+            <!-- Marathi -->
+            <div class="language-card" data-language="Marathi" data-region="West" data-family="Indo-Aryan" data-difficulty="medium">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon west-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Marathi</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Indo-Aryan</span>
+                            <span class="language-difficulty medium">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="far fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>Spoken widely in Maharashtra. Rich in folk literature and poetry.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Telugu</h3>
-                <p>Known for its musical phonetics and vibrant cinema.</p>
+            
+            <!-- Telugu --> 
+            <div class="language-card" data-language="Telugu" data-region="South" data-family="Dravidian" data-difficulty="hard">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon south-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Telugu</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Dravidian</span>
+                            <span class="language-difficulty hard">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>Known for its musical phonetics and vibrant cinema.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Gujarati</h3>
-                <p>Language of Mahatma Gandhi. Known for business and folk tales.</p>
+            
+            <!-- Gujarati -->
+            <div class="language-card" data-language="Gujarati" data-region="West" data-family="Indo-Aryan" data-difficulty="medium">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon west-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Gujarati</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Indo-Aryan</span>
+                            <span class="language-difficulty medium">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="far fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>Language of Mahatma Gandhi. Known for business and folk tales.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Kannada</h3>
-                <p>Classical language of Karnataka with a strong literary legacy.</p>
+            
+            <!-- Add remaining language cards with the same structure -->
+            <!-- Kannada -->
+            <div class="language-card" data-language="Kannada" data-region="South" data-family="Dravidian" data-difficulty="hard">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon south-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Kannada</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Dravidian</span>
+                            <span class="language-difficulty hard">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>Classical language of Karnataka with a strong literary legacy.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Punjabi</h3>
-                <p>Widely spoken in India and abroad. Language of Bhangra and Gurubani.</p>
+            
+            <!-- Punjabi -->
+            <div class="language-card" data-language="Punjabi" data-region="North" data-family="Indo-Aryan" data-difficulty="medium">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon north-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Punjabi</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Indo-Aryan</span>
+                            <span class="language-difficulty medium">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="far fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>Widely spoken in India and abroad. Language of Bhangra and Gurubani.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Malayalam</h3>
-                <p>Spoken in Kerala. Complex script and rich cinema/literature.</p>
+            
+            <!-- Malayalam -->
+            <div class="language-card" data-language="Malayalam" data-region="South" data-family="Dravidian" data-difficulty="hard">
+                <div class="language-card-inner">
+                    <div class="language-card-front">
+                        <div class="language-icon south-region">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Malayalam</h3>
+                        <div class="language-meta">
+                            <span class="language-family">Dravidian</span>
+                            <span class="language-difficulty hard">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                            </span>
+                        </div>
+                        <p>Spoken in Kerala. Complex script and rich cinema/literature.</p>
+                        <button class="learn-more-btn">Learn More</button>
+                    </div>
+                </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Urdu</h3>
-                <p>Poetic elegance and shared heritage with Hindi. Written in Perso-Arabic script.</p>
+            
+            <!-- You can add the remaining languages following the same pattern -->
+                        <!-- ADDITIONAL LANGUAGE CARDS FOR 22 OFFICIAL LANGUAGES -->
+            <!-- Already included: Hindi, Bengali, Tamil, Marathi, Telugu, Gujarati, Kannada, Punjabi, Malayalam -->
+            <!-- Now adding remaining languages -->
+            <!-- Assamese -->
+            <div class="language-card" data-language="Assamese">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon east-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Assamese</h3>
+                  <p>Spoken in Assam. Known for lyrical flow and literature.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Assamese</h3>
-                <p>Spoken in Assam. Deep-rooted folklore and traditional dance.</p>
+            
+            <!-- Urdu -->
+            <div class="language-card" data-language="Urdu">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon north-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Urdu</h3>
+                  <p>Rich poetic heritage and elegant script.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Odia</h3>
-                <p>Classical language of Odisha. Renowned for Jagannath literature.</p>
+            
+            <!-- Odia -->
+            <div class="language-card" data-language="Odia">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon east-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Odia</h3>
+                  <p>Spoken in Odisha. Known for devotional literature.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Sanskrit</h3>
-                <p>Ancient root of many Indian languages. Script of Vedas and scriptures.</p>
+            
+            <!-- Sanskrit -->
+            <div class="language-card" data-language="Sanskrit">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon central-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Sanskrit</h3>
+                  <p>Ancient language of India. Foundation of many Indian languages.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Maithili</h3>
-                <p>Known for its sweet tone and classical literature like "Ramcharitmanas".</p>
+            
+            <!-- Konkani -->
+            <div class="language-card" data-language="Konkani">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon west-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Konkani</h3>
+                  <p>Primarily spoken in Goa. Rich in folk traditions.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Dogri</h3>
-                <p>Spoken in Jammu. A mix of Punjabi and Sanskrit lineage.</p>
+            
+            <!-- Manipuri -->
+            <div class="language-card" data-language="Meitei">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon east-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Manipuri</h3>
+                  <p>Also called Meitei. Spoken in Manipur. Has own script.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
             </div>
-            <div class="culture-card">
-                <i class="fas fa-language"></i>
-                <h3>Konkani</h3>
-                <p>Spoken in Goa and coastal regions. Rich in folklore and festive songs.</p>
+            
+            <!-- Bodo -->
+            <div class="language-card" data-language="Bodo">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon east-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Bodo</h3>
+                  <p>Spoken by Bodo people in Northeast India. Tibeto-Burman family.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Santhali -->
+            <div class="language-card" data-language="Santali">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon central-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Santhali</h3>
+                  <p>Spoken by Santhal tribes. Uses Ol Chiki script.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Dogri -->
+            <div class="language-card" data-language="Dogri">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon north-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Dogri</h3>
+                  <p>Spoken in Jammu region. Rich oral tradition.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Kashmiri -->
+            <div class="language-card" data-language="Kashmiri">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon north-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Kashmiri</h3>
+                  <p>Dardic language spoken in Kashmir Valley.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Maithili -->
+            <div class="language-card" data-language="Maithili">
+              <div class="language-card-inner">
+                <div class="language-card-front">
+                  <div class="language-icon east-region">
+                    <i class="fas fa-language"></i>
+                  </div>
+                  <h3>Maithili</h3>
+                  <p>Spoken in Bihar. Known for Vidyapati's poetry.</p>
+                  <button class="learn-more-btn">Learn More</button>
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+
+        <!-- Language Details Modal -->
+        <div id="language-modal" class="language-modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <div class="modal-header">
+                    <h2 id="modal-language-title">Language Name</h2>
+                    <div id="modal-language-meta">
+                        <span id="modal-region" class="modal-region">Region</span>
+                        <span id="modal-family" class="modal-family">Family</span>
+                        <span id="modal-difficulty" class="modal-difficulty">Difficulty</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-loading">
+                        <i class="fas fa-spinner fa-spin"></i> Loading language information...
+                    </div>
+                    <div class="modal-wiki-content">
+                        <!-- Wikipedia content will be loaded here -->
+                    </div>
+                    <div class="modal-wiki-attribution">
+                        Content from <a href="#" id="wiki-source-link" target="_blank">Wikipedia</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -154,5 +464,13 @@
             <p>&copy; 2025 Cultural Department, Government of India. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="language-hub.js"></script>
 </body>
 </html>

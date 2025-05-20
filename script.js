@@ -110,3 +110,22 @@ document.getElementById('lightbox')?.remove();
 
 // Load gallery on DOM ready
 document.addEventListener('DOMContentLoaded', populateGallery);
+
+// Learn More button -> Open Wikipedia page for the language
+document.addEventListener('DOMContentLoaded', () => {
+  const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+  learnMoreButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.language-card');
+      if (card) {
+        const language = card.dataset.language;
+        if (language) {
+          const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(language)}`;
+          window.open(wikiUrl, '_blank');
+        } else {
+          alert('Language information not available.');
+        }
+      }
+    });
+  });
+});
