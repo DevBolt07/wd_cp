@@ -2,10 +2,242 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Membership Portal - Cultural Dept</title>
+    <title>Comprehensive Membership Portal - Cultural Dept</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Enhanced Form Styling */
+        .membership-form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, #ff9933, #138808);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .form-header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+        }
+
+        /* Fieldset Styling */
+        .membership-fieldset {
+            border: 2px solid #ff9933;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem;
+            background: #fefefe;
+            box-shadow: 0 5px 15px rgba(255, 153, 51, 0.1);
+            position: relative;
+        }
+
+        .membership-fieldset legend {
+            font-weight: bold;
+            font-size: 1.3rem;
+            padding: 0 1rem;
+            color: #333;
+            background: white;
+            border: 2px solid #ff9933;
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+        }
+
+        /* Form Layout */
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .form-col-full {
+            flex: 1 0 100%;
+        }
+
+        .form-col-half {
+            flex: 1 0 calc(50% - 0.5rem);
+        }
+
+        .form-col-third {
+            flex: 1 0 calc(33.33% - 0.75rem);
+        }
+
+        /* Enhanced Input Styling */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff9933;
+            box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Radio and Checkbox Styling */
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-item,
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 0.75rem 1rem;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-width: 120px;
+        }
+
+        .radio-item:hover,
+        .checkbox-item:hover {
+            background: #fff3e0;
+            border-color: #ff9933;
+        }
+
+        .radio-item input,
+        .checkbox-item input {
+            width: auto;
+            margin-right: 0.5rem;
+            accent-color: #ff9933;
+        }
+
+        /* Cultural Elements */
+        .cultural-icon {
+            display: inline-block;
+            margin-right: 0.5rem;
+            color: #ff9933;
+        }
+
+        /* Submit Button */
+        .membership-submit {
+            background: linear-gradient(45deg, #ff9933, #138808);
+            color: white;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(255, 153, 51, 0.3);
+        }
+
+        .membership-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 153, 51, 0.4);
+        }
+
+        /* Progress Indicator */
+        .form-progress {
+            background: #f0f0f0;
+            height: 4px;
+            border-radius: 2px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .form-progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, #ff9933, #138808);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-col,
+            .form-col-half,
+            .form-col-third {
+                flex: 1 0 100%;
+            }
+
+            .radio-group,
+            .checkbox-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .membership-fieldset {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Success Animation */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #138808, #2eb82e);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin: 2rem;
+            animation: slideInUp 0.5s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -21,18 +253,15 @@
         </div>
     </nav>
 
-    <!-- Membership Introduction -->
+    <!-- Main Content -->
     <section class="section" style="margin-top: 100px;">
+        <!-- Membership Plans (Existing) -->
         <div class="section-header">
             <h2>Membership Portal</h2>
             <p>Join our community and enjoy exclusive cultural experiences</p>
         </div>
-        <div class="about-text" style="max-width: 800px; margin: auto; text-align: center;">
-            <p>Our membership program is designed to connect individuals who are passionate about Indian culture. From early access to cultural events to exclusive content and discounts—there’s something for everyone!</p>
-        </div>
-
-        <!-- Membership Plans -->
-        <div class="culture-cards" style="margin-top: 3rem;">
+        
+        <div class="culture-cards" style="margin-bottom: 3rem;">
             <div class="culture-card">
                 <i class="fas fa-user"></i>
                 <h3>Basic Membership</h3>
@@ -57,36 +286,421 @@
             </div>
         </div>
 
-        <!-- Join Form -->
-        <div class="section-header" style="margin-top: 4rem;">
-            <h2>Join Now</h2>
-            <p>Fill the form below to become a member</p>
-        </div>
-        <div class="contact-form" style="max-width: 600px; margin: auto;">
-            <form id="membership-form">
-                <div class="form-group">
-                    <label for="mem-name">Full Name</label>
-                    <input type="text" id="mem-name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="mem-email">Email Address</label>
-                    <input type="email" id="mem-email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="mem-type">Choose Membership</label>
-                    <select id="mem-type" name="type" required>
-                        <option value="">Select</option>
-                        <option value="basic">Basic (Free)</option>
-                        <option value="premium">Premium (₹500/year)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="reason">Why do you want to join?</label>
-                    <textarea id="reason" name="reason" rows="4"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Become a Member</button>
-            </form>
-        </div>
+        <!-- Comprehensive Membership Form -->
+        <div class="membership-form-container">
+            <div class="form-header">
+                <h2><i class="fas fa-scroll"></i> Comprehensive Membership Registration</h2>
+                <p>Join India's Premier Cultural Community</p>
+            </div>
+
+            <div class="form-progress">
+                <div class="form-progress-bar" id="progress-bar"></div>
+            </div>
+
+            <form id="comprehensive-membership-form" action="membership-process.php" method="POST">
+                <!-- Personal Information -->
+                <fieldset class="membership-fieldset">
+                    <legend><i class="fas fa-user cultural-icon"></i>Personal Information</legend>
+                    
+                    <div class="form-group">
+                        <label>Full Name <span style="color: red;">*</span></label>
+                        <div class="form-row">
+                            <div class="form-col-third">
+                                <input type="text" name="first_name" placeholder="First Name" required>
+                            </div>
+                            <div class="form-col-third">
+                                <input type="text" name="middle_name" placeholder="Middle Name">
+                            </div>
+                            <div class="form-col-third">
+                                <input type="text" name="last_name" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="contact">Contact Number <span style="color: red;">*</span></label>
+                                <input type="tel" id="contact" name="contact" placeholder="+91-xxxxxxxxxx" required>
+                            </div>
+                        </div>
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="email">Email Address <span style="color: red;">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth <span style="color: red;">*</span></label>
+                                <input type="date" id="dob" name="dob" required>
+                            </div>
+                        </div>
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label>Gender <span style="color: red;">*</span></label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="gender" value="male" id="male" required>
+                                        <label for="male">Male</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="gender" value="female" id="female">
+                                        <label for="female">Female</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="gender" value="other" id="other">
+                                        <label for="other">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Blood Group</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="blood_group" value="A+" id="a_pos">
+                                <label for="a_pos">A+</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="blood_group" value="A-" id="a_neg">
+                                <label for="a_neg">A-</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="blood_group" value="B+" id="b_pos">
+                                <label for="b_pos">B+</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="blood_group" value="B-" id="b_neg">
+                                <label for="b_neg">B-</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="blood_group" value="O+" id="o_pos">
+                                <label for="o_pos">O+</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="blood_group" value="O-" id="o_neg">
+                                <label for="o_neg">O-</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="blood_group" value="AB+" id="ab_pos">
+                                <label for="ab_pos">AB+</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="blood_group" value="AB-" id="ab_neg">
+                                <label for="ab_neg">AB-</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="aadhar">Aadhar Number <span style="color: red;">*</span></label>
+                                <input type="text" id="aadhar" name="aadhar" placeholder="**** **** ****" required>
+                            </div>
+                        </div>
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="pan">PAN Card (Optional)</label>
+                                <input type="text" id="pan" name="pan" placeholder="ABCDE1234F">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Permanent Address <span style="color: red;">*</span></label>
+                        <textarea id="address" name="address" rows="3" placeholder="Your complete address" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col-third">
+                            <div class="form-group">
+                                <label for="city">City <span style="color: red;">*</span></label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                        </div>
+                        <div class="form-col-third">
+                            <div class="form-group">
+                                <label for="state">State <span style="color: red;">*</span></label>
+                                <select id="state" name="state" required>
+                                    <option value="">Select State</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Delhi">Delhi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col-third">
+                            <div class="form-group">
+                                <label for="pincode">PIN Code <span style="color: red;">*</span></label>
+                                <input type="text" id="pincode" name="pincode" required>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Professional Information -->
+                <fieldset class="membership-fieldset">
+                    <legend><i class="fas fa-briefcase cultural-icon"></i>Professional Information</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="occupation">Occupation <span style="color: red;">*</span></label>
+                                <select id="occupation" name="occupation" required>
+                                    <option value="">Select Occupation</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Government Employee">Government Employee</option>
+                                    <option value="Private Employee">Private Employee</option>
+                                    <option value="Business Owner">Business Owner</option>
+                                    <option value="Artist/Performer">Artist/Performer</option>
+                                    <option value="Teacher/Professor">Teacher/Professor</option>
+                                    <option value="Retired">Retired</option>
+                                    <option value="Freelancer">Freelancer</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="organization">Organization/Institution</label>
+                                <input type="text" id="organization" name="organization" placeholder="Your workplace/school">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="designation">Designation/Position</label>
+                                <input type="text" id="designation" name="designation" placeholder="Your role/position">
+                            </div>
+                        </div>
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="experience">Years of Experience</label>
+                                <select id="experience" name="experience">
+                                    <option value="">Select</option>
+                                    <option value="0-1">0-1 Years</option>
+                                    <option value="2-5">2-5 Years</option>
+                                    <option value="6-10">6-10 Years</option>
+                                    <option value="11-20">11-20 Years</option>
+                                    <option value="20+">20+ Years</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Cultural Background & Interests -->
+                <fieldset class="membership-fieldset">
+                    <legend><i class="fas fa-palette cultural-icon"></i>Cultural Background & Interests</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="mother_tongue">Mother Tongue <span style="color: red;">*</span></label>
+                                <select id="mother_tongue" name="mother_tongue" required>
+                                    <option value="">Select Language</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Marathi">Marathi</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Gujarati">Gujarati</option>
+                                    <option value="Urdu">Urdu</option>
+                                    <option value="Kannada">Kannada</option>
+                                    <option value="Odia">Odia</option>
+                                    <option value="Malayalam">Malayalam</option>
+                                    <option value="Punjabi">Punjabi</option>
+                                    <option value="Assamese">Assamese</option>
+                                    <option value="Maithili">Maithili</option>
+                                    <option value="Sanskrit">Sanskrit</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="cultural_region">Cultural Region</label>
+                                <select id="cultural_region" name="cultural_region">
+                                    <option value="">Select Region</option>
+                                    <option value="North India">North India</option>
+                                    <option value="South India">South India</option>
+                                    <option value="East India">East India</option>
+                                    <option value="West India">West India</option>
+                                    <option value="Central India">Central India</option>
+                                    <option value="Northeast India">Northeast India</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cultural Interests (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Classical Music" id="classical_music">
+                                <label for="classical_music">Classical Music</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Folk Music" id="folk_music">
+                                <label for="folk_music">Folk Music</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Classical Dance" id="classical_dance">
+                                <label for="classical_dance">Classical Dance</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Folk Dance" id="folk_dance">
+                                <label for="folk_dance">Folk Dance</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Literature" id="literature">
+                                <label for="literature">Literature</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Theatre" id="theatre">
+                                <label for="theatre">Theatre</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Handicrafts" id="handicrafts">
+                                <label for="handicrafts">Handicrafts</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Painting" id="painting">
+                                <label for="painting">Painting</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Sculpture" id="sculpture">
+                                <label for="sculpture">Sculpture</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Philosophy" id="philosophy">
+                                <label for="philosophy">Philosophy</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Spirituality" id="spirituality">
+                                <label for="spirituality">Spirituality</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="interests[]" value="Festivals" id="festivals">
+                                <label for="festivals">Festivals</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cultural_skills">Cultural Skills/Talents</label>
+                        <textarea id="cultural_skills" name="cultural_skills" rows="3" placeholder="Describe your cultural skills, talents, or achievements"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Membership Details -->
+                <fieldset class="membership-fieldset">
+                    <legend><i class="fas fa-crown cultural-icon"></i>Membership Details</legend>
+                    
+                    <div class="form-group">
+                        <label>Choose Membership Type <span style="color: red;">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item" style="flex: 1;">
+                                <input type="radio" name="membership_type" value="basic" id="basic_membership" required>
+                                <label for="basic_membership">
+                                    <strong>Basic Membership</strong><br>
+                                    <small>Free Access - Monthly Newsletter, Event Notifications</small>
+                                </label>
+                            </div>
+                            <div class="radio-item" style="flex: 1;">
+                                <input type="radio" name="membership_type" value="premium" id="premium_membership">
+                                <label for="premium_membership">
+                                    <strong>Premium Membership</strong><br>
+                                    <small>₹500/year - All benefits + Early access + Discounts</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Why do you want to join our cultural community? <span style="color: red;">*</span></label>
+                        <textarea id="reason" name="reason" rows="4" placeholder="Share your motivation and what you hope to contribute" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience_level">Your Cultural Experience Level</label>
+                        <select id="experience_level" name="experience_level">
+                            <option value="">Select</option>
+                            <option value="Beginner">Beginner - New to cultural activities</option>
+                            <option value="Intermediate">Intermediate - Some cultural exposure</option>
+                            <option value="Advanced">Advanced - Experienced in cultural arts</option>
+                            <option value="Professional">Professional - Cultural practitioner/expert</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <!-- Emergency Contact -->
+                <fieldset class="membership-fieldset">
+                    <legend><i class="fas fa-phone cultural-icon"></i>Emergency Contact</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="emergency_name">Full Name <span style="color: red;">*</span></label>
+                                <input type="text" id="emergency_name" name="emergency_name" required>
+                            </div>
+                        </div>
+                        <div class="form-col-half">
+                            <div class="form-group">
+                                <label for="emergency_relation">Relation <span style="color: red;">*</span></label>
+                                <select id="emergency_relation" name="emergency_relation" required>
+                                    <option value="">Select Relation</option>
+                                    <option value="Parent">Parent</option>
+                                    <option value="Spouse">Spouse</option>
+                                    <option value="Sibling">Sibling</option>
+                                    <option value="Friend">Friend</option>
+                                    <option value="Guardian">Guardian</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emergency_contact">Contact Number <span style="color: red;">*</span></label>
+                        <input type="tel" id="emergency_contact" name="emergency_contact" placeholder="+91-xxxxxxxxxx" required>
+                    </div>
+                </fieldset>
 
         <!-- FAQ Section -->
         <div class="section-header" style="margin-top: 5rem;">

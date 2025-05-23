@@ -2,10 +2,522 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Volunteer Registration - Cultural Dept</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
+    }
+
+    /* Navigation */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ff9933;
+    }
+
+    .logo i {
+        margin-right: 0.5rem;
+        color: #138808;
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .nav-menu a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .nav-menu a:hover {
+        color: #ff9933;
+    }
+
+    .nav-menu a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #ff9933;
+        transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+        width: 100%;
+    }
+
+    /* Main Section */
+    .section {
+        padding: 5rem 0;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(45deg, #ff9933, #138808);
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Opportunity Cards */
+    .culture-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+
+    .culture-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .culture-card:hover {
+        transform: translateY(-10px);
+        border-color: #ff9933;
+        box-shadow: 0 15px 40px rgba(255, 153, 51, 0.2);
+    }
+
+    .culture-card i {
+        font-size: 3rem;
+        color: #ff9933;
+        margin-bottom: 1rem;
+    }
+
+    .culture-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    /* Enhanced Form Styling */
+    .volunteer-form-container {
+        max-width: 1000px;
+        margin: 4rem auto 0;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .form-header {
+        background: linear-gradient(135deg, #ff9933, #138808);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .form-header h2 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    .form-header p {
+        margin: 0.5rem 0 0;
+        opacity: 0.9;
+        font-size: 1.1rem;
+    }
+
+    /* Progress Indicator */
+    .form-progress {
+        background: #f0f0f0;
+        height: 4px;
+        border-radius: 2px;
+        margin: 1rem 2rem 0;
+        overflow: hidden;
+    }
+
+    .form-progress-bar {
+        height: 100%;
+        background: linear-gradient(45deg, #ff9933, #138808);
+        width: 25%;
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
+
+    /* Fieldset Styling */
+    .volunteer-fieldset {
+        border: 2px solid #ff9933;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 2rem;
+        background: #fefefe;
+        box-shadow: 0 5px 15px rgba(255, 153, 51, 0.1);
+        position: relative;
+    }
+
+    .volunteer-fieldset legend {
+        font-weight: bold;
+        font-size: 1.3rem;
+        padding: 0 1rem;
+        color: #333;
+        background: white;
+        border: 2px solid #ff9933;
+        border-radius: 25px;
+        padding: 0.5rem 1.5rem;
+    }
+
+    /* Form Layout */
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-col {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .form-col-full {
+        flex: 1 0 100%;
+    }
+
+    .form-col-half {
+        flex: 1 0 calc(50% - 0.5rem);
+    }
+
+    .form-col-third {
+        flex: 1 0 calc(33.33% - 0.75rem);
+    }
+
+    /* Enhanced Input Styling */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .form-group .required {
+        color: #e74c3c;
+        margin-left: 3px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #ff9933;
+        box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.1);
+        transform: translateY(-2px);
+    }
+
+    /* Radio and Checkbox Styling */
+    .radio-group,
+    .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .radio-item,
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        background: #f8f9fa;
+        padding: 0.75rem 1rem;
+        border-radius: 25px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        min-width: 120px;
+    }
+
+    .radio-item:hover,
+    .checkbox-item:hover {
+        background: #fff3e0;
+        border-color: #ff9933;
+    }
+
+    .radio-item input,
+    .checkbox-item input {
+        width: auto;
+        margin-right: 0.5rem;
+        accent-color: #ff9933;
+        padding: 0;
+        transform: none;
+    }
+
+    .radio-item input:focus,
+    .checkbox-item input:focus {
+        box-shadow: none;
+        transform: none;
+    }
+
+    /* Cultural Elements */
+    .cultural-icon {
+        display: inline-block;
+        margin-right: 0.5rem;
+        color: #ff9933;
+    }
+
+    /* Submit Button */
+    .volunteer-submit {
+        background: linear-gradient(45deg, #ff9933, #138808);
+        color: white;
+        padding: 1.5rem 3rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin: 2rem 0;
+        box-shadow: 0 5px 20px rgba(255, 153, 51, 0.3);
+    }
+
+    .volunteer-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(255, 153, 51, 0.4);
+    }
+
+    /* FAQ Styling */
+    .faq-container {
+        max-width: 800px;
+        margin: 5rem auto;
+    }
+
+    .faq-item {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #ff9933;
+    }
+
+    .faq-item h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .faq-item p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        text-align: center;
+        margin: 5rem 0;
+        padding: 3rem;
+        background: linear-gradient(135deg, rgba(255, 153, 51, 0.1), rgba(19, 136, 8, 0.1));
+        border-radius: 20px;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: linear-gradient(45deg, #ff9933, #138808);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 153, 51, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .social-links {
+        margin: 1rem 0;
+    }
+
+    .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+        color: #ff9933;
+    }
+
+    /* Success Animation */
+    .success-message {
+        display: none;
+        background: linear-gradient(135deg, #138808, #2eb82e);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 15px;
+        margin: 2rem;
+        animation: slideInUp 0.5s ease;
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .section {
+            padding: 3rem 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+        }
+
+        .form-col,
+        .form-col-half,
+        .form-col-third {
+            flex: 1 0 100%;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .volunteer-fieldset {
+            margin: 1rem;
+            padding: 1.5rem;
+        }
+
+        .nav-menu {
+            display: none;
+        }
+
+        .culture-cards {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .volunteer-fieldset {
+            margin: 0.5rem;
+            padding: 1rem;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+        }
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -22,13 +534,13 @@
   </nav>
 
   <!-- Intro -->
-  <section class="section" style="margin-top: 100px;">
+  <section class="section" style="margin-top: 80px;">
     <div class="section-header">
       <h2>Volunteer With Us</h2>
       <p>Empower culture, connect people, and make a lasting impact</p>
     </div>
-    <div class="about-text" style="max-width: 800px; margin: auto; text-align: center;">
-      <p>Volunteers are the heart of our mission. Whether you’re passionate about art, heritage, languages, or logistics — we welcome you to contribute your energy and skills to preserve and promote India’s diverse cultural fabric.</p>
+    <div class="about-text">
+      <p>Volunteers are the heart of our mission. Whether you're passionate about art, heritage, languages, or logistics — we welcome you to contribute your energy and skills to preserve and promote India's diverse cultural fabric.</p>
     </div>
 
     <!-- Volunteer Roles -->
@@ -40,27 +552,32 @@
       <div class="culture-card">
         <i class="fas fa-users"></i>
         <h3>Event Coordination</h3>
-        <p>Help manage workshops, festivals, and cultural fairs.</p>
+        <p>Help manage workshops, festivals, and cultural fairs. Lead teams and coordinate logistics.</p>
       </div>
       <div class="culture-card">
         <i class="fas fa-bullhorn"></i>
         <h3>Promotion & Outreach</h3>
-        <p>Assist with social media, posters, and community outreach.</p>
+        <p>Assist with social media, marketing materials, and community engagement initiatives.</p>
       </div>
       <div class="culture-card">
         <i class="fas fa-language"></i>
         <h3>Language Support</h3>
-        <p>Translate content and help with multilingual communication.</p>
+        <p>Translate content, provide interpretation services, and support multilingual programs.</p>
       </div>
       <div class="culture-card">
         <i class="fas fa-laptop-code"></i>
         <h3>Tech Assistance</h3>
-        <p>Support our digital platforms and event registrations.</p>
+        <p>Support digital platforms, website maintenance, and event technology setup.</p>
       </div>
       <div class="culture-card">
         <i class="fas fa-camera"></i>
         <h3>Media & Photography</h3>
-        <p>Capture event highlights and document cultural stories.</p>
+        <p>Document events, create visual content, and manage multimedia projects.</p>
+      </div>
+      <div class="culture-card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>Education & Training</h3>
+        <p>Conduct workshops, teach cultural skills, and mentor other volunteers.</p>
       </div>
     </div>
 
@@ -73,112 +590,420 @@
       <div class="culture-card">
         <i class="fas fa-certificate"></i>
         <h3>Recognition</h3>
-        <p>Get a government-approved Certificate of Appreciation.</p>
+        <p>Get a government-approved Certificate of Appreciation and volunteer hours certification.</p>
       </div>
       <div class="culture-card">
         <i class="fas fa-handshake"></i>
         <h3>Networking</h3>
-        <p>Connect with artists, scholars, and cultural leaders.</p>
+        <p>Connect with artists, scholars, cultural leaders, and like-minded individuals.</p>
       </div>
       <div class="culture-card">
         <i class="fas fa-globe"></i>
         <h3>Community Impact</h3>
-        <p>Be a changemaker and inspire local cultural pride.</p>
+        <p>Be a changemaker and inspire local cultural pride while preserving heritage.</p>
+      </div>
+      <div class="culture-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Skill Development</h3>
+        <p>Gain valuable experience in event management, communication, and cultural arts.</p>
       </div>
     </div>
 
     <!-- Registration Form -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2>Register as a Volunteer</h2>
-      <p>We’d love to hear from you!</p>
-    </div>
-    <div class="contact-form" style="max-width: 700px; margin: auto;">
+    <div class="volunteer-form-container">
+      <div class="form-header">
+        <h2><i class="fas fa-hands-helping"></i> Volunteer Registration</h2>
+        <p>Join our mission to preserve and promote India's rich cultural heritage</p>
+      </div>
+      
+      <div class="form-progress">
+        <div class="form-progress-bar" id="progress-bar"></div>
+      </div>
+
       <form id="volunteer-form">
-        <div class="form-group">
-          <label for="vol-name">Full Name</label>
-          <input type="text" id="vol-name" name="name" required />
-        </div>
-        <div class="form-group">
-          <label for="vol-email">Email</label>
-          <input type="email" id="vol-email" name="email" required />
-        </div>
-        <div class="form-group">
-          <label for="vol-phone">Phone Number</label>
-          <input type="text" id="vol-phone" name="phone" required />
-        </div>
-        <div class="form-group">
-          <label for="interest">Area of Interest</label>
-          <select id="interest" name="interest" required>
-            <option value="">Select</option>
-            <option value="event">Event Coordination</option>
-            <option value="promotion">Promotion & Outreach</option>
-            <option value="language">Language Support</option>
-            <option value="tech">Tech Assistance</option>
-            <option value="media">Media & Photography</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="city">Preferred City</label>
-          <input type="text" id="city" name="city" placeholder="e.g., Mumbai, Delhi" />
-        </div>
-        <div class="form-group">
-          <label for="availability">Availability</label>
-          <input type="text" id="availability" name="availability" placeholder="Weekends, Evenings..." required />
-        </div>
-        <div class="form-group">
-          <label for="resume">Upload Resume (optional)</label>
-          <input type="file" id="resume" name="resume" />
-        </div>
-        <div class="form-group">
-          <label for="motivation">Why do you want to volunteer?</label>
-          <textarea id="motivation" name="motivation" rows="4" required></textarea>
-        </div>
-        <div class="form-group">
-          <label><input type="checkbox" required /> I agree to the terms and privacy policy</label>
-        </div>
-        <button type="submit" class="submit-btn">Submit Application</button>
-      </form>
-    </div>
+        <!-- Personal Information -->
+        <fieldset class="volunteer-fieldset">
+          <legend><i class="cultural-icon fas fa-user"></i> Personal Information</legend>
+          
+          <div class="form-row">
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="firstName">First Name <span class="required">*</span></label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
+            </div>
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text" id="middleName" name="middleName">
+              </div>
+            </div>
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="lastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
+            </div>
+          </div>
 
-    <!-- FAQ Section -->
-    <div class="section-header" style="margin-top: 5rem;">
-      <h2>Volunteer FAQs</h2>
-    </div>
-    <div style="max-width: 800px; margin: auto;">
-      <div class="culture-card">
-        <h3>Is there any age requirement?</h3>
-        <p>Volunteers must be 16 years or older. Parental consent is needed for minors.</p>
-      </div>
-      <div class="culture-card">
-        <h3>Is volunteering paid?</h3>
-        <p>No, all volunteering is unpaid. However, you gain experience and recognition.</p>
-      </div>
-      <div class="culture-card">
-        <h3>Can I get a certificate?</h3>
-        <p>Yes! Active volunteers will receive a Certificate of Appreciation.</p>
-      </div>
-    </div>
+          <div class="form-row">
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+            </div>
+          </div>
 
-    <!-- Final CTA -->
-    <div class="section-header" style="margin-top: 5rem;">
-      <h2>Make a Difference Today</h2>
-      <p>Join hands to preserve the soul of India’s culture</p>
-      <a href="#volunteer-form" class="cta-button">Start Volunteering</a>
-    </div>
-  </section>
+          <div class="form-row">
+            <div class="form-col-third">
+              <div class="form-group">
+                <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+              </div>
+            </div>
+            <div class="form-col-third">
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                  <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+           <div class="form-col-third">
+             <div class="form-group">
+               <label for="bloodGroup">Blood Group</label>
+               <select id="bloodGroup" name="bloodGroup">
+                 <option value="">Select</option>
+                 <option value="A+">A+</option>
+                 <option value="A-">A-</option>
+                 <option value="B+">B+</option>
+                 <option value="B-">B-</option>
+                 <option value="O+">O+</option>
+                 <option value="O-">O-</option>
+                 <option value="AB+">AB+</option>
+                 <option value="AB-">AB-</option>
+               </select>
+             </div>
+           </div>
+           <div class="form-col-third">
+             <div class="form-group">
+               <label for="aadhar">Aadhar Number <span class="required">*</span></label>
+               <input type="text" id="aadhar" name="aadhar" maxlength="14" required placeholder="XXXX XXXX XXXX">
+             </div>
+           </div>
+           <div class="form-col-third">
+             <div class="form-group">
+               <label for="pan">PAN Card (Optional)</label>
+               <input type="text" id="pan" name="pan" maxlength="10" placeholder="ABCDE1234F">
+             </div>
+           </div>
+          </div>
+            <div class="form-col-third">
+              <div class="form-group">
+                <label for="occupation">Current Occupation</label>
+                <input type="text" id="occupation" name="occupation" placeholder="e.g., Student, Teacher, Professional">
+              </div>
+            </div>
+          </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
+          <div class="form-row">
+            <div class="form-col-full">
+              <div class="form-group">
+                <label for="address">Complete Address <span class="required">*</span></label>
+                <textarea id="address" name="address" rows="3" required placeholder="House/Flat No., Street, Area, City, State, PIN Code"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="city">City <span class="required">*</span></label>
+                <input type="text" id="city" name="city" required>
+              </div>
+            </div>
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="state">State <span class="required">*</span></label>
+                <select id="state" name="state" required>
+                  <option value="">Select State</option>
+                  <option value="andhra-pradesh">Andhra Pradesh</option>
+                  <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                  <option value="assam">Assam</option>
+                  <option value="bihar">Bihar</option>
+                  <option value="chhattisgarh">Chhattisgarh</option>
+                  <option value="goa">Goa</option>
+                  <option value="gujarat">Gujarat</option>
+                  <option value="haryana">Haryana</option>
+                  <option value="himachal-pradesh">Himachal Pradesh</option>
+                  <option value="jharkhand">Jharkhand</option>
+                  <option value="karnataka">Karnataka</option>
+                  <option value="kerala">Kerala</option>
+                  <option value="madhya-pradesh">Madhya Pradesh</option>
+                  <option value="maharashtra">Maharashtra</option>
+                  <option value="manipur">Manipur</option>
+                  <option value="meghalaya">Meghalaya</option>
+                  <option value="mizoram">Mizoram</option>
+                  <option value="nagaland">Nagaland</option>
+                  <option value="odisha">Odisha</option>
+                  <option value="punjab">Punjab</option>
+                  <option value="rajasthan">Rajasthan</option>
+                  <option value="sikkim">Sikkim</option>
+                  <option value="tamil-nadu">Tamil Nadu</option>
+                  <option value="telangana">Telangana</option>
+                  <option value="tripura">Tripura</option>
+                  <option value="uttar-pradesh">Uttar Pradesh</option>
+                  <option value="uttarakhand">Uttarakhand</option>
+                  <option value="west-bengal">West Bengal</option>
+                  <option value="delhi">Delhi</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- profetional information -->
+         <fieldset class="volunteer-fieldset">
+  <legend><i class="fas fa-briefcase"></i> Professional Information</legend>
+  <div class="form-row">
+    <div class="form-col-third">
+      <div class="form-group">
+        <label for="occupation">Occupation <span class="required">*</span></label>
+        <select id="occupation" name="occupation" required>
+          <option value="">Select Occupation</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="engineer">Engineer</option>
+          <option value="artist">Artist</option>
+          <option value="government">Government Employee</option>
+          <option value="private">Private Sector</option>
+          <option value="other">Other</option>
+        </select>
       </div>
-      <p>&copy; 2025 Cultural Department, Government of India. All rights reserved.</p>
     </div>
-  </footer>
-</body>
-</html>
+    <div class="form-col-third">
+      <div class="form-group">
+        <label for="organization">Organization/Institution</label>
+        <input type="text" id="organization" name="organization" placeholder="Your workplace/school">
+      </div>
+    </div>
+    <div class="form-col-third">
+      <div class="form-group">
+        <label for="designation">Designation/Position</label>
+        <input type="text" id="designation" name="designation" placeholder="Your role/position">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-col-half">
+      <div class="form-group">
+        <label for="experience">Years of Experience</label>
+        <select id="experience" name="experience">
+          <option value="">Select</option>
+          <option value="0">0</option>
+          <option value="1-2">1-2</option>
+          <option value="3-5">3-5</option>
+          <option value="6-10">6-10</option>
+          <option value="10+">10+</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+<!-- membership details -->
+ <fieldset class="volunteer-fieldset">
+  <legend><i class="fas fa-id-card"></i> Membership Details</legend>
+  <div class="form-group">
+    <label>Choose Membership Type <span class="required">*</span></label>
+    <div class="radio-group">
+      <label class="radio-item">
+        <input type="radio" name="membership" value="basic" required> Basic Membership
+      </label>
+      <label class="radio-item">
+        <input type="radio" name="membership" value="premium"> Premium Membership (₹500/year)
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="motivation">Why do you want to join our cultural community? <span class="required">*</span></label>
+    <textarea id="motivation" name="motivation" rows="4" required placeholder="Share your motivation and what you hope to contribute"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="experience-level">Your Cultural Experience Level</label>
+    <select id="experience-level" name="experience-level">
+      <option value="">Select</option>
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+  </div>
+</fieldset>
+
+
+        <!-- Volunteer Interests -->
+        <fieldset class="volunteer-fieldset">
+          <legend><i class="cultural-icon fas fa-heart"></i> Volunteer Interests</legend>
+          
+          <div class="form-group">
+            <label>Primary Areas of Interest <span class="required">*</span> (Select multiple)</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="event-coord" name="interests[]" value="event-coordination">
+                <label for="event-coord">Event Coordination</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="promotion" name="interests[]" value="promotion-outreach">
+                <label for="promotion">Promotion & Outreach</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="language-support" name="interests[]" value="language-support">
+                <label for="language-support">Language Support</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="tech-assist" name="interests[]" value="tech-assistance">
+                <label for="tech-assist">Tech Assistance</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="media-photo" name="interests[]" value="media-photography">
+                <label for="media-photo">Media & Photography</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="education" name="interests[]" value="education-training">
+                <label for="education">Education & Training</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="cultural-background">Cultural Background/Heritage</label>
+                <input type="text" id="cultural-background" name="culturalBackground" placeholder="e.g., Punjabi, Tamil, Bengali, etc.">
+              </div>
+            </div>
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="languages">Languages Known</label>
+                <input type="text" id="languages" name="languages" placeholder="e.g., Hindi, English, Tamil, etc.">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cultural-skills">Cultural Skills & Talents</label>
+            <textarea id="cultural-skills" name="culturalSkills" rows="3" placeholder="e.g., Classical dance, music, painting, handicrafts, storytelling, etc."></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Availability & Commitment -->
+        <fieldset class="volunteer-fieldset">
+          <legend>Availability & Commitment</legend>
+          <div class="form-row">
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="availability-days">Which days are you available?<span class="required">*</span></label>
+                <div class="checkbox-group">
+                  <label class="checkbox-item"><input type="checkbox" name="availability[]" value="Monday"> Monday</label>
+                  <label class="checkbox-item"><input type="checkbox" name="availability[]" value="Tuesday"> Tuesday</label>
+                  <label class="checkbox-item"><input type="checkbox" name="availability[]" value="Wednesday"> Wednesday</label>
+                  <label class="checkbox-item"><input type="checkbox" name="availability[]" value="Thursday"> Thursday</label>
+                  <label class="checkbox-item"><input type="checkbox" name="availability[]" value="Friday"> Friday</label>
+                  <label class="checkbox-item"><input type="checkbox" name="availability[]" value="Saturday"> Saturday</label>
+                  <label class="checkbox-item"><input type="checkbox" name="availability[]" value="Sunday"> Sunday</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="hours-per-week">How many hours can you commit per week?<span class="required">*</span></label>
+                <input type="number" name="hours-per-week" id="hours-per-week" min="1" max="40" placeholder="E.g., 5">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        
+        <!-- Coding & Technical Skills -->
+        <fieldset class="volunteer-fieldset">
+          <legend>Technical Skills</legend>
+          <div class="form-row">
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="languages">Which programming languages do you know?<span class="required">*</span></label>
+                <div class="checkbox-group">
+                  <label class="checkbox-item"><input type="checkbox" name="languages[]" value="HTML"> HTML</label>
+                  <label class="checkbox-item"><input type="checkbox" name="languages[]" value="CSS"> CSS</label>
+                  <label class="checkbox-item"><input type="checkbox" name="languages[]" value="JavaScript"> JavaScript</label>
+                  <label class="checkbox-item"><input type="checkbox" name="languages[]" value="Python"> Python</label>
+                  <label class="checkbox-item"><input type="checkbox" name="languages[]" value="C/C++"> C/C++</label>
+                  <label class="checkbox-item"><input type="checkbox" name="languages[]" value="Java"> Java</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-col-half">
+              <div class="form-group">
+                <label for="tech-roles">Which roles can you assist with?<span class="required">*</span></label>
+                <div class="checkbox-group">
+                  <label class="checkbox-item"><input type="checkbox" name="tech-roles[]" value="Web Development"> Web Development</label>
+                  <label class="checkbox-item"><input type="checkbox" name="tech-roles[]" value="App Development"> App Development</label>
+                  <label class="checkbox-item"><input type="checkbox" name="tech-roles[]" value="Graphic Design"> Graphic Design</label>
+                  <label class="checkbox-item"><input type="checkbox" name="tech-roles[]" value="Video Editing"> Video Editing</label>
+                  <label class="checkbox-item"><input type="checkbox" name="tech-roles[]" value="Content Writing"> Content Writing</label>
+                  <label class="checkbox-item"><input type="checkbox" name="tech-roles[]" value="Arduino/IoT"> Arduino/IoT</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        
+        <!-- Previous Projects -->
+        <fieldset class="volunteer-fieldset">
+          <legend>Past Experience</legend>
+          <div class="form-group">
+            <label for="projects">Share any previous project or volunteering experience (with links if available):</label>
+            <textarea name="projects" id="projects" rows="4" placeholder="Describe your experience, contributions, or share GitHub/portfolio links"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset class="volunteer-fieldset">
+  <legend><i class="fas fa-phone-alt"></i> Emergency Contact</legend>
+  <div class="form-row">
+    <div class="form-col-half">
+      <div class="form-group">
+        <label for="emergencyName">Full Name <span class="required">*</span></label>
+        <input type="text" id="emergencyName" name="emergencyName" required>
+      </div>
+    </div>
+    <div class="form-col-half">
+      <div class="form-group">
+        <label for="relation">Relation <span class="required">*</span></label>
+        <select id="relation" name="relation" required>
+          <option value="">Select Relation</option>
+          <option value="parent">Parent</option>
+          <option value="sibling">Sibling</option>
+          <option value="spouse">Spouse</option>
+          <option value="friend">Friend</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="emergencyContact">Contact Number <span class="required">*</span></label>
+    <input type="tel" id="emergencyContact" name="emergencyContact" required placeholder="+91-XXXXXXXXXX">
+  </div>
+</fieldset>
+
+        
