@@ -701,6 +701,11 @@
                         <input type="tel" id="emergency_contact" name="emergency_contact" placeholder="+91-xxxxxxxxxx" required>
                     </div>
                 </fieldset>
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <button type="submit" class="membership-submit">Submit Form</button>
+                    <button type="reset" class="membership-submit" style="background: #999;">Reset Form</button>
+                </div>
+                
 
         <!-- FAQ Section -->
         <div class="section-header" style="margin-top: 5rem;">
@@ -735,5 +740,126 @@
             <p>&copy; 2025 Cultural Department, Government of India. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+document.getElementById('comprehensive-membership-form').addEventListener('submit', function (e) {
+    const form = this;
+
+    const requiredTextFields = [
+        'first_name', 'last_name', 'contact', 'email', 'dob',
+        'aadhar', 'address', 'city', 'pincode', 'reason',
+        'emergency_name', 'emergency_contact'
+    ];
+
+    // 1. General empty field check
+    for (let field of requiredTextFields) {
+        const el = form.querySelector(`[name="${field}"]`);
+        if (!el || el.value.trim() === '') {
+            alert(`Please fill the ${field.replaceAll('_', ' ')} field.`);
+            el.focus();
+            e.preventDefault();
+            return false;
+        }
+    }
+
+    // 2. Alphabet-only fields
+    const alphabetRegex = /^[A-Za-z\s]+$/;
+    const nameFields = ['first_name', 'middle_name', 'last_name', 'city', 'emergency_name'];
+
+    for (let field of nameFields) {
+        const el = form.querySelector(`[name="${field}"]`);
+        if (el && el.value.trim() !== '' && !alphabetRegex.test(el.value.trim())) {
+            alert(`Please enter only alphabets in ${field.replaceAll('_', ' ')}.`);
+            el.focus();
+            e.preventDefault();
+            return false;
+        }
+    }
+
+    // 3. Contact Number Format
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(form.contact.value.trim())) {
+        alert("Please enter a valid 10-digit contact number.");
+        form.contact.focus();
+        e.preventDefault();
+        return false;
+    }
+
+    if (!phoneRegex.test(form.emergency_contact.value.trim())) {
+        alert("Please enter a valid emergency contact number.");
+        form.emergency_contact.focus();
+        e.preventDefault();
+        return false;
+    }
+
+    // 4. Email Format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email.value.trim())) {
+        alert("Please enter a valid email address.");
+        form.email.focus();
+        e.preventDefault();
+        return false;
+    }
+
+    // 5. Aadhar Format (XXXX XXXX XXXX)
+    const aadharRegex = /^\d{4}\s?\d{4}\s?\d{4}$/;
+    if (!aadharRegex.test(form.aadhar.value.trim())) {
+        alert("Please enter a valid 12-digit Aadhar number.");
+        form.aadhar.focus();
+        e.preventDefault();
+        return false;
+    }
+
+    // 6. PAN Card Format (ABCDE1234F)
+    const pan = form.pan.value.trim();
+    if (pan !== '') {
+        const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+        if (!panRegex.test(pan)) {
+            alert("Please enter a valid PAN number (e.g., ABCDE1234F).");
+            form.pan.focus();
+            e.preventDefault();
+            return false;
+        }
+    }
+
+    // 7. PIN Code
+    const pinRegex = /^[1-9][0-9]{5}$/;
+    if (!pinRegex.test(form.pincode.value.trim())) {
+        alert("Please enter a valid 6-digit PIN code.");
+        form.pincode.focus();
+        e.preventDefault();
+        return false;
+    }
+
+    // 8. Gender & Membership
+    if (!form.gender.value) {
+        alert("Please select your gender.");
+        e.preventDefault();
+        return false;
+    }
+
+    if (!form.membership_type.value) {
+        alert("Please choose a membership type.");
+        e.preventDefault();
+        return false;
+    }
+
+    // 9. Required dropdowns
+    const dropdowns = ['state', 'occupation', 'mother_tongue', 'emergency_relation'];
+    for (let id of dropdowns) {
+        const el = form.querySelector(`#${id}`);
+        if (!el || el.value === '') {
+            alert(`Please select an option for ${id.replaceAll('_', ' ')}.`);
+            el.focus();
+            e.preventDefault();
+            return false;
+        }
+    }
+
+    // 10. Show success message
+    alert("🎉 Form submitted successfully!");
+});
+</script>
+
+        
 </body>
 </html>
