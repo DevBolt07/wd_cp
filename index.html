@@ -200,7 +200,45 @@
       <p>Explore the vibrant tapestry of Indian culture</p>
     </div>
     <div class="gallery-container" id="gallery-container">
-      <!-- Images will be injected here by script.js -->
+      <div class="gallery-container" id="gallery-container">
+  <div class="gallery-item">
+    <a href="https://en.wikipedia.org/wiki/Traditional_Dance" target="_blank" title="Traditional Dance">
+      <img src="https://images.unsplash.com/photo-1723879867060-71f585cdba32?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Traditional Dance" />
+      <div class="gallery-overlay"><i class="fab fa-wikipedia-w"></i></div>
+    </a>
+  </div>
+  <div class="gallery-item">
+    <a href="https://en.wikipedia.org/wiki/Heritage_architecture" target="_blank" title="Heritage Architecture">
+      <img src="https://images.unsplash.com/photo-1662101511535-7f5672bdf118?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Heritage Architecture" />
+      <div class="gallery-overlay"><i class="fab fa-wikipedia-w"></i></div>
+    </a>
+  </div>
+  <div class="gallery-item">
+    <a href="https://en.wikipedia.org/wiki/Folk_art" target="_blank" title="Folk Art">
+      <img src="https://media.istockphoto.com/id/1193642393/photo/female-needlework-on-fabric-material-close-up-view-unidentified-tribal-women-sewing-ethnic.webp?a=1&b=1&s=612x612&w=0&k=20&c=krPFJyg5oLIDHiEjmbfHCnGQAtAG4nUfULXWEBBn_bs=" alt="Folk Art" />
+      <div class="gallery-overlay"><i class="fab fa-wikipedia-w"></i></div>
+    </a>
+  </div>
+  <div class="gallery-item">
+    <a href="https://en.wikipedia.org/wiki/Musical_instrument" target="_blank" title="Musical Instruments">
+      <img src="https://images.unsplash.com/photo-1677254112978-d7121217135e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Musical Instruments" />
+      <div class="gallery-overlay"><i class="fab fa-wikipedia-w"></i></div>
+    </a>
+  </div>
+  <div class="gallery-item">
+    <a href="https://en.wikipedia.org/wiki/Handicraft" target="_blank" title="Handicrafts">
+      <img src="https://images.unsplash.com/photo-1524314010015-136ee8ae1ab3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Handicrafts" />
+      <div class="gallery-overlay"><i class="fab fa-wikipedia-w"></i></div>
+    </a>
+  </div>
+  <div class="gallery-item">
+    <a href="https://en.wikipedia.org/wiki/Indian_festivals" target="_blank" title="Cultural Festival">
+      <img src="https://images.unsplash.com/photo-1582095390960-e562b10f7cb8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Cultural Festival" />
+      <div class="gallery-overlay"><i class="fab fa-wikipedia-w"></i></div>
+    </a>
+  </div>
+</div>
+
     </div>
   </section>
 
@@ -280,25 +318,30 @@
                 </div>
             </div>
             <div class="contact-form">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
+                <form id="contact-form" novalidate>
+                  <div class="form-group">
+                    <label for="name">Full Name <span style="color: red">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                    <small class="error-message" id="name-error"></small>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email Address <span style="color: red">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                    <small class="error-message" id="email-error"></small>
+                  </div>
+                  <div class="form-group">
+                    <label for="subject">Subject <span style="color: red">*</span></label>
+                    <input type="text" id="subject" name="subject" required>
+                    <small class="error-message" id="subject-error"></small>
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Message <span style="color: red">*</span></label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <small class="error-message" id="message-error"></small>
+                  </div>
+                  <button type="submit" class="submit-btn">Send Message</button>
+                  <div id="form-status" class="form-status"></div>
+                </form>                
             </div>
         </div>
     </section>
@@ -307,11 +350,11 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/indiaculture.goi/"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/MinOfCultureGoI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ministryofculturegoi/?hl=en"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/c/MinistryofCultureGovtofIndia"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/ministry-of-culture-govt-of-india-49664b362/?originalSubdomain=in"><i class="fab fa-linkedin"></i></a>
             </div>
             <p>&copy; 2025 Cultural Department, Government of India. All rights reserved.</p>
             <p>Preserving Heritage • Promoting Unity • Celebrating Diversity</p>

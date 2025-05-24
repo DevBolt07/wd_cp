@@ -18,7 +18,7 @@ window.addEventListener('scroll', () => {
 });
 
 // Smooth scrolling
-document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
@@ -38,97 +38,69 @@ scrollTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Form validation for contact (if present)
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
-    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+// Form validation for contact (basic)
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
 
-    if (!name || !email || !subject || !message) {
-      alert('Please fill in all fields');
-      return;
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const subjectInput = document.getElementById('subject');
+  const messageInput = document.getElementById('message');
+
+  const nameError = document.getElementById('name-error');
+  const emailError = document.getElementById('email-error');
+  const subjectError = document.getElementById('subject-error');
+  const messageError = document.getElementById('message-error');
+
+  function validateForm() {
+    let valid = true;
+
+    // Reset error messages
+    nameError.textContent = '';
+    emailError.textContent = '';
+    subjectError.textContent = '';
+    messageError.textContent = '';
+    status.textContent = '';
+
+    // Name validation
+    if (!nameInput.value.trim().match(/^[A-Za-z\s]{3,}$/)) {
+      nameError.textContent = 'Please enter at least 3 letters.';
+      valid = false;
     }
-    if (!emailRegex.test(email)) {
-      alert('Enter a valid email');
-      return;
+
+    // Email validation
+    if (!emailInput.value.trim().match(/^\S+@\S+\.\S+$/)) {
+      emailError.textContent = 'Enter a valid email address.';
+      valid = false;
     }
-    alert('Thank you for your message! We will get back to you soon.');
-    this.reset();
-  });
-}
 
-// === Dynamic Cultural Gallery Using Pexels API and Wikipedia Links ===
-const PEXELS_API_KEY = '1om9rdWXk8PAzlmisrNff3hmKaLeTCzF3FmB63Ls8BovV8oMjwHb4UNR';
-const GALLERY_TERMS = [
-  'Traditional Dance',
-  'Heritage Architecture',
-  'Folk Art',
-  'Musical Instruments',
-  'Handicrafts',
-  'Cultural Festival'
-];
-
-const galleryContainer = document.getElementById('gallery-container');
-
-async function fetchImagesFromPexels(query) {
-  const response = await fetch(`https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=1`, {
-    headers: { Authorization: PEXELS_API_KEY }
-  });
-  const data = await response.json();
-  return data.photos.length > 0 ? data.photos[0].src.large : null;
-}
-
-async function populateGallery() {
-  for (const term of GALLERY_TERMS) {
-    const imgUrl = await fetchImagesFromPexels(term);
-    if (imgUrl) {
-      const wikiLink = `https://en.wikipedia.org/wiki/${term.replace(/\\s+/g, '_')}`;
-      const item = document.createElement('div');
-      item.className = 'gallery-item';
-
-      item.innerHTML = `
-        <a href=\"${wikiLink}\" target=\"_blank\" title=\"Learn more about ${term}\">
-          <img src=\"${imgUrl}\" alt=\"${term}\" />
-          <div class=\"gallery-overlay\">
-            <i class=\"fab fa-wikipedia-w\"></i>
-          </div>
-        </a>
-      `;
-      galleryContainer.appendChild(item);
+    // Subject validation
+    if (subjectInput.value.trim().length < 5) {
+      subjectError.textContent = 'Subject must be at least 5 characters.';
+      valid = false;
     }
+
+    // Message validation
+    if (messageInput.value.trim().length < 10) {
+      messageError.textContent = 'Message should be at least 10 characters.';
+      valid = false;
+    }
+
+    return valid;
   }
-}
 
-// Remove old lightbox if it exists
-document.getElementById('lightbox')?.remove();
-
-// Load gallery on DOM ready
-document.addEventListener('DOMContentLoaded', populateGallery);
-
-// Learn More button -> Open Wikipedia page for the language
-document.addEventListener('DOMContentLoaded', () => {
-  const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
-  learnMoreButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const card = button.closest('.language-card');
-      if (card) {
-        const language = card.dataset.language;
-        if (language) {
-          const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(language)}`;
-          window.open(wikiUrl, '_blank');
-        } else {
-          alert('Language information not available.');
-        }
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (validateForm()) {
+        status.style.color = 'green';
+        status.textContent = 'Message sent successfully!';
+        form.reset();
+      } else {
+        status.style.color = 'red';
+        status.textContent = 'Please correct the errors above.';
       }
     });
-  });
+  }
 });
-
-
-
